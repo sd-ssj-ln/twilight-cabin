@@ -4,6 +4,8 @@
 
 在线地址：**https://sd-ssj-ln.github.io/twilight-cabin/**
 
+![暮色林中小屋桌面预览](preview-desktop.png)
+
 ## 打开
 
 直接双击 `index.html` 即可。也可以把它放进任意静态服务器（VS Code Live Server、`npx serve` 等）访问，不需要构建步骤。
