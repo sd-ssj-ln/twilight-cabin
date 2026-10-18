@@ -2,6 +2,8 @@
 
 一段可漫游的暮色林间短景。整幅画面与全部声音都在浏览器里实时生成，没有图片、视频或音频素材，也没有外部依赖。
 
+在线地址：**https://sd-ssj-ln.github.io/twilight-cabin/**
+
 ## 打开
 
 直接双击 `index.html` 即可。也可以把它放进任意静态服务器（VS Code Live Server、`npx serve` 等）访问，不需要构建步骤。
@@ -46,9 +48,9 @@
 
 ## 放到公网
 
-这是零依赖的纯静态站点，整个目录原样上传即可，适合 GitHub Pages、Cloudflare Pages、Netlify 或任意静态服务器。注意要连同 `style.css`、`art.js`、`scene.js`、`favicon.svg` 一起上传，不能只传 `index.html`。
+当前已发布在 GitHub Pages：`https://sd-ssj-ln.github.io/twilight-cabin/`，仓库 `https://github.com/sd-ssj-ln/twilight-cabin`。
 
-如果使用 GitHub Pages：把目录推到仓库的 `main` 分支，在 Settings → Pages 选择 `Deploy from a branch` / `main` / `/ (root)`，几分钟后得到公开地址。页面里的资源全部是相对路径，放在子目录（例如 `https://name.github.io/twilight-cabin/`）也能正常工作。
+更新方式：把 `index.html`、`style.css`、`art.js`、`scene.js`、`favicon.svg` 等文件提交到仓库 `main` 分支，Pages 会自动重建。页面里的资源全部是相对路径，放在子目录也能正常工作。
 
 ## 调试参数
 
