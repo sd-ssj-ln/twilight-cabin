@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#081011">
+<meta name="color-scheme" content="dark">
+<title>暮色林中小屋 · a cabin at dusk</title>
+<meta name="description" content="一段可漫游的暮色林间短景。风吹过松林，木屋里留着一盏灯。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="暮色林中小屋">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="暮色林中小屋 · a cabin at dusk">
+<meta property="og:description" content="一段可漫游的暮色林间短景。风吹过松林，木屋里留着一盏灯。">
+<meta property="og:image" content="og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="暮色林中小屋 · a cabin at dusk">
+<meta name="twitter:description" content="一段可漫游的暮色林间短景。">
+<meta name="twitter:image" content="og-cover.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage">
+  <canvas id="scene" aria-label="暮色森林中的一座木屋。可移动光标环顾，点击檐下灯、木门或进入屋内轻触物件。"></canvas>
+</div>
+
+<div class="vignette" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="bar bar-top" aria-hidden="true"></div>
+<div class="bar bar-bottom" aria-hidden="true"></div>
+
+<div class="cursor" id="cursor" aria-hidden="true"><span></span></div>
+
+<div id="hud" class="hud" aria-hidden="true">
+  <header class="topline">
+    <div class="wordmark">
+      <span class="wordmark-cn">暮色林中小屋</span>
+      <span class="wordmark-en">a cabin at dusk</span>
+    </div>
+    <div class="readout">
+      <span id="sceneName">林间</span>
+      <span class="tick" aria-hidden="true"></span>
+      <time id="clock">18:42</time>
+      <span class="tick" aria-hidden="true"></span>
+      <span id="weatherState">薄雾</span>
+    </div>
+  </header>
+
+  <div class="whisper" id="whisper" role="status" aria-live="polite">风穿过松林，像有人在低声讲旧事。</div>
+
+  <footer class="controls">
+    <div class="time-rail" role="group" aria-label="选择时刻">
+      <span class="rail-kicker">时刻</span>
+      <div class="rail-track">
+        <span class="rail-line" aria-hidden="true"><i id="railDot"></i></span>
+        <div class="rail-stops">
+          <button type="button" data-time="0" class="time-btn is-on" aria-pressed="true"><span>黄昏</span><small>18:42</small></button>
+          <button type="button" data-time="1" class="time-btn" aria-pressed="false"><span>入夜</span><small>20:17</small></button>
+          <button type="button" data-time="2" class="time-btn" aria-pressed="false"><span>深夜</span><small>23:48</small></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="quiet-btn" id="weatherToggle" aria-pressed="false">
+        <span class="btn-glyph" aria-hidden="true">
+          <svg viewBox="0 0 20 20" width="15" height="15"><path d="M10 3.2v3M10 13.8v3M3.2 10h3M13.8 10h3M5.2 5.2l2.1 2.1M12.7 12.7l2.1 2.1M14.8 5.2l-2.1 2.1M7.3 12.7l-2.1 2.1" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><circle cx="10" cy="10" r="2.3" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+        </span>
+        <span id="weatherLabel">细雨</span>
+      </button>
+      <button type="button" class="quiet-btn" id="soundToggle" aria-pressed="false">
+        <span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span id="soundLabel">声音 关</span>
+      </button>
+      <button type="button" class="door-btn" id="doorBtn">
+        <span class="door-line" aria-hidden="true"></span>
+        <span id="doorLabel">推门</span>
+      </button>
+    </div>
+  </footer>
+</div>
+
+<section id="intro" class="intro">
+  <div class="scrim" aria-hidden="true"></div>
+  <div class="intro-main">
+    <div class="title-lockup">
+      <h1 class="vertical-title" aria-label="暮色林中小屋"><span>暮色林中</span><span>小屋</span></h1>
+      <span class="seal" aria-hidden="true">暮</span>
+    </div>
+    <div class="intro-copy">
+      <p class="tagline">林线尽头，有人替你留了一盏灯。</p>
+      <p class="meta">一段可漫游的暮色 · 画面与声音均由代码实时生成</p>
+      <div class="entry">
+        <button type="button" class="enter-btn" id="enterBtn">
+          <span class="enter-label">走进暮色</span>
+          <span class="enter-sub">开启声景</span>
+        </button>
+        <button type="button" class="silent-btn" id="enterSilent">静音进入</button>
+      </div>
+    </div>
+  </div>
+  <div class="intro-credit"><span>移动光标环顾 · 点击发亮的东西</span><span>黄昏 18:42</span></div>
+</section>
+
+<div id="veil" class="veil" aria-hidden="true"></div>
+<noscript><div class="noscript">这段暮色需要 JavaScript 才能亮起来。</div></noscript>
+<script src="art.js" defer></script>
+<script src="scene.js" defer></script>
+</body>
+</html>
